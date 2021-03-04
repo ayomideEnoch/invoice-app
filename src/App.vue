@@ -1,26 +1,92 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="w-full h-screen bg-gray-200 px-40 pt-10">
+    <section class="flex justify-between mb-14">
+      <div>
+        <p class="font-semibold text-4xl">Invoices</p>
+        <p class="text-gray-400 text-sm">There are 7 total invoices</p>
+      </div>
+
+      <div class="flex items-center">
+        <div class="flex mr-4">
+          <p class="font-semibold text-sm">Filter by status</p>
+          <p class="font-bold text-sm text-purple-600 pl-3">></p>
+        </div>
+        <button class="flex items-center bg-purple-900 p-2 rounded-full">
+          <div
+            class="flex justify-center items-center bg-white h-7 w-7 rounded-full text-xl"
+          >
+            <p>+</p>
+          </div>
+          <p class="text-white text-sm font-semibold px-2">New Invoice</p>
+        </button>
+      </div>
+    </section>
+    <section class="">
+      <div
+        v-for="invoice in invoiceData"
+        :key="invoice.index"
+        class="flex justify-between items-center bg-white shadow-md p-2 px-5 rounded-lg mb-5"
+      >
+        <p class="font-semibold">{{ invoice.invoiceNo }}</p>
+        <p class="text-gray-400 text-sm font-semibold">{{ invoice.dueDate }}</p>
+        <p class="text-gray-400 text-xs font-bold">{{ invoice.Name }}</p>
+        <p class="font-semibold text-2xl">{{ invoice.price }}</p>
+        <div class="flex items-center">
+          <div class="flex items-center bg-green-100 rounded-md p-2 px-4">
+            <p class="text-green-700 pr-2 font-bold">o</p>
+            <p class="text-green-700 pl-2">{{ invoice.status }}</p>
+          </div>
+          <p class="text-purple-400 pl-3 font-bold">></p>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      invoiceData: [
+        {
+          invoiceNo: "#RT5555",
+          dueDate: "Due 19 Ayg 2021",
+          Name: "Ayo Ibosiola",
+          price: "N19,000",
+          status: "Paid",
+        },
+        {
+          invoiceNo: "#RT5555",
+          dueDate: "Due 19 Ayg 2021",
+          Name: "Ayo Ibosiola",
+          price: "N19,000",
+          status: "Paid",
+        },
+        {
+          invoiceNo: "#RT5555",
+          dueDate: "Due 19 Ayg 2021",
+          Name: "Ayo Ibosiola",
+          price: "N19,000",
+          status: "Paid",
+        },
+        {
+          invoiceNo: "#RT5555",
+          dueDate: "Due 19 Ayg 2021",
+          Name: "Ayo Ibosiola",
+          price: "N19,000",
+          status: "Paid",
+        },
+        {
+          invoiceNo: "#RT5555",
+          dueDate: "Due 19 Ayg 2021",
+          Name: "Ayo Ibosiola",
+          price: "N19,000",
+          status: "Paid",
+        },
+      ],
+    };
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
