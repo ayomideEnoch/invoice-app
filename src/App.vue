@@ -19,7 +19,9 @@
           >
             <i class="fas fa-plus"></i>
           </div>
-          <p class="text-white text-sm font-semibold px-2">New Invoice</p>
+          <p class="text-white text-sm font-semibold px-2">
+            <router-link :to="{ name: 'InvoiceCreate' }">New Invoice</router-link>
+          </p>
         </button>
       </div>
     </section>
@@ -41,7 +43,7 @@
             <p class="text-green-700 pl-2">{{ invoice.status }}</p>
           </div>
           <p class="text-purple-400 pl-3 font-bold">
-            <i class="fas fa-angle-right"></i>
+            <i class="fas fa-angle-right cursor-pointer"></i>
           </p>
         </div>
       </div>

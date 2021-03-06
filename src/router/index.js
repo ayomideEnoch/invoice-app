@@ -1,28 +1,35 @@
-const { createApp, h } = Vue
+import { createWebHistory, createRouter } from "vue-router";
+import invoiceList from "@/views/InvoiceList";
+import invoiceShow from "@/views/InvoiceShow";
+import invoiceEdit from "@/views/InvoiceEdit";
+import invoiceCreate from "@/views/InvoiceCreate";
 
-const NotFoundComponent = { template: '<p>Page not found</p>' }
-const HomeComponent = { template: '<p>Home page</p>' }
-const AboutComponent = { template: '<p>About page</p>' }
-
-const routes = {
-  '/': HomeComponent,
-  '/about': AboutComponent
-}
-
-const SimpleRouter = {
-  data: () => ({
-    currentRoute: window.location.pathname
-  }),
-
-  computed: {
-    CurrentComponent() {
-      return routes[this.currentRoute] || NotFoundComponent
-    }
+const routes = [
+  {
+    path: "/",
+    name: "invoiceList",
+    component: invoiceList,
   },
+  {
+    path: "/invoiceShow",
+    name: "invoiceShow",
+    component: invoiceShow,
+  },
+  {
+    path: "/invoiceEdit",
+    name: "invoiceEdit",
+    component: invoiceEdit,
+  },
+  {
+    path: "/invoiceCreate",
+    name: "invoiceCreate",
+    component: invoiceCreate,
+  },
+];
 
-  render() {
-    return h(this.CurrentComponent)
-  }
-}
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
 
-createApp(SimpleRouter).mount('#app')
+export default router;
