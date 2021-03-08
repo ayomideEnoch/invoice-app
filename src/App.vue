@@ -5,7 +5,7 @@
       <p class="text-xl text-gray-700 ml-2">#</p>
       <p>XM9141</p>
     </div>
-    <div class="capitalize text-blue-900">bill from</div>
+    <div class="capitalize text-blue-900 font-bold">bill from</div>
   </section>
 </template>
 
