@@ -103,7 +103,7 @@
       </div>
       <div class="flex justify-between bg-gray-400 px-28 shadow-2xl rounded-md mb-10">
         <p class="capitalize flex items-center text-gray-700">amount due</p>
-        <p class="text-6xl py-4">#556.00</p>
+        <p class="text-4xl py-4">#556.00</p>
       </div>
     </section>
   </div>
