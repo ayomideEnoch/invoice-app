@@ -10,6 +10,12 @@
       <p class="text-gray-700 mt-3 mb-1">street address</p>
       <div class="bg-gray-50 py-2 px-6 rounded-md shadow-4xl">19 union terrace</div>
     </div>
+    <div class="font-bold capitalize flex justify-evenly -ml-64">
+      <p class="text-gray-700 mt-3 mb-1">city</p>
+      <p class="text-gray-700 mt-3 mb-1">post code</p>
+      <p class="text-gray-700 mt-3 mb-1">country</p>
+      <!-- <p class="bg-gray-50 py-2 px-6 rounded-md shadow-4xl">london</p> -->
+    </div>
   </section>
 </template>
 
