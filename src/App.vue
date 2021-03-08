@@ -6,6 +6,9 @@
       <p>XM9141</p>
     </div>
     <div class="capitalize text-blue-900 font-bold">bill from</div>
+    <div class="font-bold capitalize">
+      <p class="text-gray-700 mt-3 mb-1">street address</p>
+    </div>
   </section>
 </template>
 
