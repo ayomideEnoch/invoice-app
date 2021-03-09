@@ -103,7 +103,7 @@
         </div>
       </div>
       <div
-        class="flex justify-between bg-black px-28 shadow-xl rounded-md mb-10 text-white"
+        class="flex justify-between bg-black px-28 shadow-xl rounded-b-md mb-10 text-white"
       >
         <p class="capitalize flex items-center text-sm">amount due</p>
         <p class="text-4xl py-4">#556.00</p>
