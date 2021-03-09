@@ -9,7 +9,7 @@
       </div>
 
       <div class="flex items-center">
-        <button @click="dropdown = true" class="flex mr-4 focus:outline-none">
+        <button @click="dropdown = !dropdown" class="flex mr-4 focus:outline-none">
           <p class="font-semibold text-sm">Filter by status</p>
           <p class="font-bold text-sm text-purple-600 pl-3">
             <i class="fa fa-angle-down"></i>
@@ -17,7 +17,7 @@
         </button>
         <div
           v-if="dropdown"
-          class="bg-white w-32 absolute top-20 right-72 mr-6 rounded-md text-sm py-2"
+          class="bg-white w-32 absolute top-20 mt-1 right-72 mr-6 rounded-md text-sm py-2 shadow-md"
         >
           <p class="py-1 p-3 hover:bg-green-100 cursor-pointer">Paid</p>
           <p class="py-1 p-3 hover:bg-yellow-100 cursor-pointer">Pending</p>
