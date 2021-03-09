@@ -1,46 +1,41 @@
 <template>
-  <div class="w-full h-full bg-gray-200 px-40 pt-10">
+  <div class="">
     <section class="">
-      <button class="flex justify-start items-center mb-6 font-bold">
+      <button
+        @click="$router.go(-1)"
+        class="flex justify-start items-center mb-6 focus:outline-none"
+      >
         <i class="fa fa-angle-left mr-10 text-blue-600"></i>
         <p>Go back</p>
       </button>
       <div
-        class="flex justify-between items-center font-bold bg-white shadow-md p-2 pl-12 pr-12 px-5 py-4 rounded-lg mb-5"
+        class="flex justify-between items-center bg-white shadow-md p-2 pl-12 pr-12 px-5 py-4 rounded-lg mb-5"
       >
-        <div>
-          <div class="flex items-center capitalize font-bold">
+        <div class="flex">
+          <div class="flex items-center capitalize">
             <p class="mr-4">status</p>
-            <div class="flex text-yellow-500 bg-yellow-100 items-center py-3 rounded-md">
-              <p class="px-2 text-sm">
-                <i class="fas fa-circle"></i>
-              </p>
-              <p class="px-2">pending</p>
-            </div>
+          </div>
+          <div
+            class="bg-yellow-100 text-yellow-700 capitalize flex items-center p-2 w-24 rounded-md"
+          >
+            <i class="pr-2 text-xs fad fa-circle"></i>
+            <p>pending</p>
           </div>
         </div>
-        <div class="flex py-3">
-          <button
-            class="px-6 shadow-md bg-gray-300 rounded-2xl p-2 ml-4 capitalize font-bold"
-          >
-            <p>edit</p>
+        <div class="flex py-3 text-white">
+          <button class="px-6 shadow-md bg-gray-300 rounded-2xl p-2 ml-4 capitalize">
+            <p class="text-black">edit</p>
           </button>
-          <button
-            class="px-6 shadow-md bg-red-500 rounded-2xl p-2 ml-4 capitalize font-bold"
-          >
+          <button class="px-6 shadow-md bg-red-500 rounded-2xl p-2 ml-4 capitalize">
             <p>delete</p>
           </button>
           <button>
-            <p class="px-6 shadow-md bg-blue-700 rounded-2xl p-2 ml-4 font-bold">
-              Mark as Paid
-            </p>
+            <p class="px-6 shadow-md bg-blue-700 rounded-2xl p-2 ml-4">Mark as Paid</p>
           </button>
         </div>
       </div>
     </section>
-    <section
-      class="pt-6 font-bold bg-white shadow-md pl-12 pr-12 p-2 px-5 py-4 rounded-lg mb-5"
-    >
+    <section class="pt-6 bg-white shadow-md pl-12 pr-12 p-2 px-5 py-4 rounded-lg mb-5">
       <div class="flex justify-between">
         <div class="">
           <div class="flex items-center">
