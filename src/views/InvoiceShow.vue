@@ -23,14 +23,20 @@
           </div>
         </div>
         <div class="flex py-3 text-white">
-          <button class="px-6 shadow-md bg-gray-300 rounded-2xl p-2 ml-4 capitalize">
+          <button
+            class="px-6 shadow-md bg-gray-300 rounded-2xl p-2 ml-4 capitalize focus:outline-none"
+          >
             <p class="text-black">edit</p>
           </button>
-          <button class="px-6 shadow-md bg-red-500 rounded-2xl p-2 ml-4 capitalize">
+          <button
+            class="px-6 shadow-md bg-red-500 rounded-2xl p-2 ml-4 capitalize focus:outline-none"
+          >
             <p>delete</p>
           </button>
-          <button>
-            <p class="px-6 shadow-md bg-blue-700 rounded-2xl p-2 ml-4">Mark as Paid</p>
+          <button
+            class="px-6 shadow-md bg-blue-700 rounded-2xl p-2 ml-4 focus:outline-none"
+          >
+            <p>Mark as Paid</p>
           </button>
         </div>
       </div>
