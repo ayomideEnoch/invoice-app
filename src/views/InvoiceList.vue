@@ -139,7 +139,7 @@ export default {
       this.invoice = this.invoiceData;
     },
   },
-  beforeMount() {
+  mounted() {
     this.allInvoice();
   },
 };
