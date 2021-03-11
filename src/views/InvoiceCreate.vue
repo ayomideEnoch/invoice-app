@@ -191,7 +191,7 @@
             />
           </td>
           <td><p>156.00</p></td>
-          <td class="flex justify-center py-3 cursor-pointer text-red-400">
+          <td class="flex justify-center py-3 cursor-pointer text-red-500">
             <i class="fa fa-trash"></i>
           </td>
         </tr>
@@ -220,7 +220,7 @@
           <td>
             <p>400.00</p>
           </td>
-          <td class="flex justify-center py-3 cursor-pointer text-red-400">
+          <td class="flex justify-center py-3 cursor-pointer text-red-500">
             <i class="fa fa-trash"></i>
           </td>
         </tr>
@@ -228,7 +228,7 @@
     </table>
 
     <div class="flex py-5 justify-end">
-      <button class="text-white px-6 bg-red-400 rounded-2xl p-2 ml-4 focus:outline-none">
+      <button class="text-white px-6 bg-red-500 rounded-2xl p-2 ml-4 focus:outline-none">
         <p>Cancel</p>
       </button>
       <button
