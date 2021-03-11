@@ -159,7 +159,7 @@
 
     <table class="table-fixed w-full mb-8">
       <thead>
-        <tr class="text-gray-400 text-left mb-2">
+        <tr class="text-gray-400 text-left pb-2">
           <th class="w-5/12">Item Name</th>
           <th class="w-1/12">Qty.</th>
           <th class="w-3/12">Price</th>
@@ -167,8 +167,8 @@
           <th class="w-1/12"></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody class="">
+        <tr class="">
           <td class="pr-6">
             <input
               class="rounded-md w-full border border-gray-300 font-semibold"
@@ -176,22 +176,24 @@
               type="text"
             />
           </td>
-          <td class="pr-2">
+          <td class="pr-6">
             <input
               class="rounded-md w-full border border-gray-300 font-semibold"
               placeholder="1 "
               type="number"
             />
           </td>
-          <td class="pr-2">
+          <td class="pr-6">
             <input
               class="rounded-md w-full border border-gray-300 font-semibold"
               placeholder="156.00"
               type="number"
             />
           </td>
-          <td><p>156.00</p></td>
-          <td class="flex justify-center py-3 cursor-pointer text-red-500">
+          <td>
+            <p>156.00</p>
+          </td>
+          <td class="cursor-pointer text-red-600">
             <i class="fa fa-trash"></i>
           </td>
         </tr>
@@ -203,14 +205,14 @@
               type="email"
             />
           </td>
-          <td class="pr-2">
+          <td class="pr-6">
             <input
               class="rounded-md w-full border border-gray-300 font-semibold"
               placeholder="2"
               type="number"
             />
           </td>
-          <td class="pr-2">
+          <td class="pr-6">
             <input
               class="rounded-md w-full border border-gray-300 font-semibold"
               placeholder="200.00"
@@ -220,15 +222,24 @@
           <td>
             <p>400.00</p>
           </td>
-          <td class="flex justify-center py-3 cursor-pointer text-red-500">
+          <td class="cursor-pointer text-red-600">
             <i class="fa fa-trash"></i>
           </td>
         </tr>
       </tbody>
     </table>
 
+    <div class="">
+      <button
+        class="flex justify-center items-center bg-blue-500 rounded-full w-full text-white focus:outline-none p-2"
+      >
+        <i class="fa fa-plus"></i>
+        <p class="pl-2">Add New Item</p>
+      </button>
+    </div>
+
     <div class="flex py-5 justify-end">
-      <button class="text-white px-6 bg-red-500 rounded-2xl p-2 ml-4 focus:outline-none">
+      <button class="text-white px-6 bg-red-600 rounded-2xl p-2 ml-4 focus:outline-none">
         <p>Cancel</p>
       </button>
       <button
@@ -244,4 +255,11 @@
 export default {};
 </script>
 
-<style></style>
+<style>
+td {
+  padding: 0.5rem;
+}
+th {
+  padding: 0.25rem;
+}
+</style>
