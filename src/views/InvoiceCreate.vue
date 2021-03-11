@@ -7,6 +7,7 @@
       <label class="">
         <span class="text-gray-400">Steet Address</span>
         <input
+          v-model="billFrom.streetAddress"
           class="rounded-md w-full border border-gray-300 font-semibold"
           placeholder="Steet Address"
           type="text"
@@ -19,6 +20,7 @@
         <label class="">
           <span class="text-gray-400">City</span>
           <input
+            v-model="billFrom.city"
             class="rounded-md w-full border border-gray-300 font-semibold"
             placeholder="City"
             type="text"
@@ -30,6 +32,7 @@
         <label class="">
           <span class="text-gray-400">Post Code</span>
           <input
+            v-model="billFrom.postCode"
             class="rounded-md w-full border border-gray-300 font-semibold"
             placeholder="Post Code"
             type="text"
@@ -41,6 +44,7 @@
         <label class="">
           <span class="text-gray-400">Country</span>
           <input
+            v-model="billFrom.country"
             class="rounded-md w-full border border-gray-300 font-semibold"
             placeholder="Country"
             type="text"
@@ -55,6 +59,7 @@
       <label class="">
         <span class="text-gray-400">Client's Name</span>
         <input
+          v-model="billTo.clientName"
           class="rounded-md w-full border border-gray-300 font-semibold"
           placeholder="Client's Name"
           type="text"
@@ -66,6 +71,7 @@
       <label class="">
         <span class="text-gray-400">Client's Email</span>
         <input
+          v-model="billTo.clientEmail"
           class="rounded-md w-full border border-gray-300 font-semibold"
           placeholder="Client's Email"
           type="email"
@@ -77,6 +83,7 @@
       <label class="">
         <span class="text-gray-400">Street Address</span>
         <input
+          v-model="billTo.streetAddress"
           class="rounded-md w-full border border-gray-300 font-semibold"
           placeholder="Street Address"
           type="text"
@@ -89,6 +96,7 @@
         <label class="">
           <span class="text-gray-400">City</span>
           <input
+            v-model="billTo.city"
             class="rounded-md w-full border border-gray-300 font-semibold"
             placeholder="City"
             type="text"
@@ -100,6 +108,7 @@
         <label class="">
           <span class="text-gray-400">Post Code</span>
           <input
+            v-model="billTo.postCode"
             class="rounded-md w-full border border-gray-300 font-semibold"
             placeholder="Post Code"
             type="text"
@@ -111,6 +120,7 @@
         <label class="">
           <span class="text-gray-400">Country</span>
           <input
+            v-model="billTo.country"
             class="rounded-md w-full border border-gray-300 font-semibold"
             placeholder="Country"
             type="text"
@@ -124,6 +134,7 @@
         <label class="">
           <span class="text-gray-400">Invoice Date</span>
           <input
+            v-model="invoiceData.invoiceDate"
             class="rounded-md w-full border border-gray-300 font-semibold"
             type="date"
           />
@@ -133,10 +144,13 @@
       <div class="w-1/2">
         <label class="">
           <span class="text-gray-400">Payment Terms</span>
-          <select class="rounded-md w-full border border-gray-300 font-semibold">
-            <option value="volvo">Net 30 Days</option>
-            <option value="saab">Net 60 Days</option>
-            <option value="mercedes">Net 90 Days</option>
+          <select
+            v-model="invoiceData.paymentTerms"
+            class="rounded-md w-full border border-gray-300 font-semibold"
+          >
+            <option value="Net 30 Days">Net 30 Days</option>
+            <option value="Net 60 Days">Net 60 Days</option>
+            <option value="Net 90 Days">Net 90 Days</option>
           </select>
         </label>
       </div>
@@ -146,6 +160,7 @@
       <label class="">
         <span class="text-gray-400">Project Description</span>
         <input
+          v-model="invoiceData.projectDescription"
           class="rounded-md w-full border border-gray-300 font-semibold"
           placeholder="Project Description"
           type="text"
@@ -168,62 +183,43 @@
         </tr>
       </thead>
       <tbody class="">
-        <tr class="">
+        <tr v-for="(item, index) in itemList" :key="item.index">
           <td class="pr-6">
             <input
+              v-model="item.itemName"
               class="rounded-md w-full border border-gray-300 font-semibold"
-              placeholder="Banner "
+              placeholder="Item Name"
               type="text"
             />
           </td>
           <td class="pr-6">
             <input
+              v-model="item.price"
               class="rounded-md w-full border border-gray-300 font-semibold"
-              placeholder="1 "
+              placeholder=""
               type="number"
             />
           </td>
           <td class="pr-6">
             <input
+              v-model="item.quantity"
               class="rounded-md w-full border border-gray-300 font-semibold"
-              placeholder="156.00"
+              placeholder=""
               type="number"
             />
           </td>
           <td>
             <p>156.00</p>
           </td>
-          <td class="cursor-pointer text-red-600">
-            <i class="fa fa-trash"></i>
-          </td>
-        </tr>
-        <tr>
-          <td class="pr-6">
-            <input
-              class="rounded-md w-full border border-gray-300 font-semibold"
-              placeholder="Email"
-              type="email"
-            />
-          </td>
-          <td class="pr-6">
-            <input
-              class="rounded-md w-full border border-gray-300 font-semibold"
-              placeholder="2"
-              type="number"
-            />
-          </td>
-          <td class="pr-6">
-            <input
-              class="rounded-md w-full border border-gray-300 font-semibold"
-              placeholder="200.00"
-              type="number"
-            />
-          </td>
           <td>
-            <p>400.00</p>
-          </td>
-          <td class="cursor-pointer text-red-600">
-            <i class="fa fa-trash"></i>
+            <button
+              @click="removeItem(index)"
+              :disabled="itemList.length === 1"
+              class="cursor-pointer"
+              :class="itemList.length === 1 ? 'text-gray-500' : 'text-red-600 '"
+            >
+              <i class="fa fa-trash"></i>
+            </button>
           </td>
         </tr>
       </tbody>
@@ -231,6 +227,7 @@
 
     <div class="">
       <button
+        @click="addItem"
         class="flex justify-center items-center bg-blue-500 rounded-full w-full text-white focus:outline-none p-2"
       >
         <i class="fa fa-plus"></i>
@@ -252,7 +249,56 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      billFrom: {
+        streetAddress: "",
+        city: "",
+        postCode: "",
+        country: "",
+      },
+      billTo: {
+        clientName: "",
+        clientEmail: "",
+        streetAddress: "",
+        city: "",
+        postCode: "",
+        country: "",
+      },
+      invoiceData: {
+        invoiceDate: "",
+        paymentTerms: "",
+        projectDescription: "",
+      },
+      itemList: [
+        {
+          itemName: "",
+          quantity: "",
+          price: "",
+        },
+        {
+          itemName: "",
+          quantity: "",
+          price: "",
+        },
+      ],
+    };
+  },
+
+  methods: {
+    addItem() {
+      this.itemList.push({
+        itemName: "",
+        quantity: "",
+        price: "",
+      });
+    },
+    removeItem(index) {
+      this.itemList = this.itemList.filter((item, i) => i !== index);
+    },
+  },
+};
 </script>
 
 <style>
