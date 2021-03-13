@@ -235,19 +235,28 @@
       </button>
     </div>
 
-    <div class="flex py-5 justify-end">
-      <router-link :to="{ name: 'Home' }"
-        ><button
-          class="text-white px-6 bg-red-600 rounded-2xl p-2 ml-4 focus:outline-none"
+    <div class="flex justify-between items-center">
+      <div>
+        <router-link :to="{ name: 'Home' }"
+          ><button
+            class="text-white px-6 bg-red-600 rounded-2xl p-2 ml-4 focus:outline-none"
+          >
+            <p>Discard</p>
+          </button>
+        </router-link>
+      </div>
+      <div class="flex py-5 justify-end">
+        <button
+          class="text-white px-6 bg-gray-500 rounded-2xl p-2 ml-4 focus:outline-none"
         >
-          <p>Cancel</p>
-        </button></router-link
-      >
-      <button
-        class="px-6 shadow-md bg-blue-700 rounded-2xl p-2 ml-4 focus:outline-none text-white"
-      >
-        <p>Save Changes</p>
-      </button>
+          <p>Save as Draft</p>
+        </button>
+        <button
+          class="px-6 shadow-md bg-blue-700 rounded-2xl p-2 ml-4 focus:outline-none text-white"
+        >
+          <p>Save & Send</p>
+        </button>
+      </div>
     </div>
   </div>
 </template>

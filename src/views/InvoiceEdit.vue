@@ -236,9 +236,13 @@
     </div>
 
     <div class="flex py-5 justify-end">
-      <button class="text-white px-6 bg-red-600 rounded-2xl p-2 ml-4 focus:outline-none">
-        <p>Cancel</p>
-      </button>
+      <router-link :to="{ name: 'Home' }"
+        ><button
+          class="text-white px-6 bg-red-600 rounded-2xl p-2 ml-4 focus:outline-none"
+        >
+          <p>Cancel</p>
+        </button></router-link
+      >
       <button
         class="px-6 shadow-md bg-blue-700 rounded-2xl p-2 ml-4 focus:outline-none text-white"
       >
