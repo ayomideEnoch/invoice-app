@@ -178,7 +178,7 @@
           <th class="w-5/12">Item Name</th>
           <th class="w-1/12">Qty.</th>
           <th class="w-3/12">Price</th>
-          <th class="w-2/12">Total</th>
+          <th class="w-2/12 text-center">Total</th>
           <th class="w-1/12"></th>
         </tr>
       </thead>
@@ -209,7 +209,7 @@
             />
           </td>
           <td>
-            <p>156.00</p>
+            <p class="text-center">{{ item.quantity * item.price }}</p>
           </td>
           <td>
             <button
@@ -298,6 +298,16 @@ export default {
       this.itemList = this.itemList.filter((item, i) => i !== index);
     },
   },
+  // computed: {
+  //   calculateTotal: function () {
+  //     for (let i = 0; i < this.itemList.length; i++) {
+  //       let total = this.itemList[i].quantity * this.itemList[i].price;
+  //       this.itemList[i].total = total;
+  //     }
+  //     let tt = 0;
+  //     return tt;
+  //   },
+  // },
 };
 </script>
 
