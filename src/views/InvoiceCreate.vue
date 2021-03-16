@@ -260,12 +260,13 @@
       </div>
       <div class="flex py-5 justify-end">
         <button
+          @click="saveDraft"
           class="text-white px-6 bg-gray-500 rounded-2xl p-2 ml-4 focus:outline-none"
         >
           <p>Save as Draft</p>
         </button>
         <button
-          @click="send"
+          @click="saveSend"
           class="px-6 shadow-md bg-blue-700 rounded-2xl p-2 ml-4 focus:outline-none text-white"
         >
           <p>Save & Send</p>
@@ -295,6 +296,7 @@ export default {
           country: "",
         },
         invoiceData: {
+          invoiceNo: "",
           invoiceDate: "",
           paymentTerms: "",
           projectDescription: "",
@@ -325,8 +327,15 @@ export default {
     },
   },
   methods: {
-    send() {
-      this.$store.commit("setInvoiceDatabase", this.invoiceDatabase);
+    saveSend() {
+      this.invoiceDatabase.invoiceData.invoiceTotal = this.total;
+      this.invoiceDatabase.invoiceData.status = "Pending";
+      this.$store.dispatch("setNewInvoiceCreated", this.invoiceDatabase);
+    },
+    saveDraft() {
+      this.invoiceDatabase.invoiceData.invoiceTotal = this.total;
+      this.invoiceDatabase.invoiceData.status = "Draft";
+      this.$store.dispatch("setNewInvoiceCreated", this.invoiceDatabase);
     },
     addItem() {
       this.invoiceDatabase.itemList.push({
@@ -341,16 +350,6 @@ export default {
       );
     },
   },
-  // computed: {
-  //   calculateTotal: function () {
-  //     for (let i = 0; i < this.itemList.length; i++) {
-  //       let total = this.itemList[i].quantity * this.itemList[i].price;
-  //       this.itemList[i].total = total;
-  //     }
-  //     let tt = 0;
-  //     return tt;
-  //   },
-  // },
 };
 </script>
 

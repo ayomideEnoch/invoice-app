@@ -56,21 +56,23 @@
           :to="{ name: 'InvoiceShow' }"
           class="flex justify-between items-center bg-white shadow-md p-2 px-5 rounded-lg mb-5"
         >
-          <p class="font-semibold">{{ invoice.invoiceNo }}</p>
-          <p class="text-gray-400 text-sm font-semibold">{{ invoice.dueDate }}</p>
-          <p class="text-gray-400 text-xs font-bold">{{ invoice.Name }}</p>
-          <p class="font-semibold text-2xl">{{ invoice.price }}</p>
+          <p class="font-semibold">{{ invoice.invoiceData.invoiceNo }}</p>
+          <p class="text-gray-400 text-sm font-semibold">
+            {{ invoice.invoiceData.invoiceDate }}
+          </p>
+          <p class="text-gray-400 text-xs font-bold">{{ invoice.billTo.clientName }}</p>
+          <p class="font-semibold text-2xl">{{ invoice.invoiceData.invoiceTotal }}</p>
           <div class="flex items-center">
             <div
               class="flex items-center justify-center rounded-md p-2 w-24"
               :class="
-                invoice.status === 'Paid'
+                invoice.invoiceData.status === 'Paid'
                   ? 'bg-green-100 text-green-700'
                   : 'bg-yellow-100 text-yellow-700'
               "
             >
               <i class="pr-2 text-xs fad fa-circle"></i>
-              <p class="text-sm text-center">{{ invoice.status }}</p>
+              <p class="text-sm text-center">{{ invoice.invoiceData.status }}</p>
             </div>
             <p class="text-purple-400 pl-3 font-bold">
               <i class="fas fa-angle-right cursor-pointer"></i>
@@ -105,6 +107,7 @@ export default {
             country: "Niger",
           },
           invoiceData: {
+            invoiceNo: "#123",
             invoiceDate: "29 March, 2021",
             paymentTerms: "30 Days",
             projectDescription: "Design of school",
@@ -140,11 +143,12 @@ export default {
             country: "Niger",
           },
           invoiceData: {
+            invoiceNo: "#144",
             invoiceDate: "29 March, 2021",
             paymentTerms: "30 Days",
             projectDescription: "Design of school",
             invoiceTotal: "#23,000",
-            status: "Paid",
+            status: "Pending",
           },
           itemList: [
             {
@@ -175,11 +179,12 @@ export default {
             country: "Niger",
           },
           invoiceData: {
+            invoiceNo: "#122",
             invoiceDate: "29 March, 2021",
             paymentTerms: "30 Days",
             projectDescription: "Design of school",
             invoiceTotal: "#23,000",
-            status: "Paid",
+            status: "Pending",
           },
           itemList: [
             {
@@ -208,6 +213,7 @@ export default {
                 country: "Niger",
               },
               invoiceData: {
+                invoiceNo: "#33442",
                 invoiceDate: "29 March, 2021",
                 paymentTerms: "30 Days",
                 projectDescription: "Design of school",
@@ -243,6 +249,7 @@ export default {
                 country: "Niger",
               },
               invoiceData: {
+                invoiceNo: "#66773",
                 invoiceDate: "29 March, 2021",
                 paymentTerms: "30 Days",
                 projectDescription: "Design of school",
@@ -304,14 +311,14 @@ export default {
   },
   methods: {
     filteredInvoice(status) {
-      let result = this.invoiceData;
+      let result = this.invoiceDatabase;
       let filter = result.filter(function (type) {
-        return type.status === status;
+        return type.invoiceData.status === status;
       });
       this.invoice = filter;
     },
     allInvoice() {
-      this.invoice = this.invoiceData;
+      this.invoice = this.invoiceDatabase;
     },
   },
   mounted() {
