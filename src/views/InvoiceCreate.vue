@@ -7,7 +7,7 @@
       <label class="">
         <span class="text-gray-400">Steet Address</span>
         <input
-          v-model="billFrom.streetAddress"
+          v-model="invoiceDatabase.billFrom.streetAddress"
           class="rounded-md w-full border border-gray-300 font-semibold"
           placeholder="Steet Address"
           type="text"
@@ -20,7 +20,7 @@
         <label class="">
           <span class="text-gray-400">City</span>
           <input
-            v-model="billFrom.city"
+            v-model="invoiceDatabase.billFrom.city"
             class="rounded-md w-full border border-gray-300 font-semibold"
             placeholder="City"
             type="text"
@@ -32,7 +32,7 @@
         <label class="">
           <span class="text-gray-400">Post Code</span>
           <input
-            v-model="billFrom.postCode"
+            v-model="invoiceDatabase.billFrom.postCode"
             class="rounded-md w-full border border-gray-300 font-semibold"
             placeholder="Post Code"
             type="text"
@@ -44,7 +44,7 @@
         <label class="">
           <span class="text-gray-400">Country</span>
           <input
-            v-model="billFrom.country"
+            v-model="invoiceDatabase.billFrom.country"
             class="rounded-md w-full border border-gray-300 font-semibold"
             placeholder="Country"
             type="text"
@@ -59,7 +59,7 @@
       <label class="">
         <span class="text-gray-400">Client's Name</span>
         <input
-          v-model="billTo.clientName"
+          v-model="invoiceDatabase.billTo.clientName"
           class="rounded-md w-full border border-gray-300 font-semibold"
           placeholder="Client's Name"
           type="text"
@@ -71,7 +71,7 @@
       <label class="">
         <span class="text-gray-400">Client's Email</span>
         <input
-          v-model="billTo.clientEmail"
+          v-model="invoiceDatabase.billTo.clientEmail"
           class="rounded-md w-full border border-gray-300 font-semibold"
           placeholder="Client's Email"
           type="email"
@@ -83,7 +83,7 @@
       <label class="">
         <span class="text-gray-400">Street Address</span>
         <input
-          v-model="billTo.streetAddress"
+          v-model="invoiceDatabase.billTo.streetAddress"
           class="rounded-md w-full border border-gray-300 font-semibold"
           placeholder="Street Address"
           type="text"
@@ -96,7 +96,7 @@
         <label class="">
           <span class="text-gray-400">City</span>
           <input
-            v-model="billTo.city"
+            v-model="invoiceDatabase.billTo.city"
             class="rounded-md w-full border border-gray-300 font-semibold"
             placeholder="City"
             type="text"
@@ -108,7 +108,7 @@
         <label class="">
           <span class="text-gray-400">Post Code</span>
           <input
-            v-model="billTo.postCode"
+            v-model="invoiceDatabase.billTo.postCode"
             class="rounded-md w-full border border-gray-300 font-semibold"
             placeholder="Post Code"
             type="text"
@@ -120,7 +120,7 @@
         <label class="">
           <span class="text-gray-400">Country</span>
           <input
-            v-model="billTo.country"
+            v-model="invoiceDatabase.billTo.country"
             class="rounded-md w-full border border-gray-300 font-semibold"
             placeholder="Country"
             type="text"
@@ -134,7 +134,7 @@
         <label class="">
           <span class="text-gray-400">Invoice Date</span>
           <input
-            v-model="invoiceData.invoiceDate"
+            v-model="invoiceDatabase.invoiceData.invoiceDate"
             class="rounded-md w-full border border-gray-300 font-semibold"
             type="date"
           />
@@ -145,12 +145,12 @@
         <label class="">
           <span class="text-gray-400">Payment Terms</span>
           <select
-            v-model="invoiceData.paymentTerms"
+            v-model="invoiceDatabase.invoiceData.paymentTerms"
             class="rounded-md w-full border border-gray-300 font-semibold"
           >
-            <option value="Net 30 Days">Net 30 Days</option>
-            <option value="Net 60 Days">Net 60 Days</option>
-            <option value="Net 90 Days">Net 90 Days</option>
+            <option value="30 Days">Net 30 Days</option>
+            <option value="60 Days">Net 60 Days</option>
+            <option value="90 Days">Net 90 Days</option>
           </select>
         </label>
       </div>
@@ -160,7 +160,7 @@
       <label class="">
         <span class="text-gray-400">Project Description</span>
         <input
-          v-model="invoiceData.projectDescription"
+          v-model="invoiceDatabase.invoiceData.projectDescription"
           class="rounded-md w-full border border-gray-300 font-semibold"
           placeholder="Project Description"
           type="text"
@@ -175,15 +175,15 @@
     <table class="table-fixed w-full mb-8">
       <thead>
         <tr class="text-gray-400 text-left pb-2">
-          <th class="w-5/12">Item Name</th>
-          <th class="w-1/12">Qty.</th>
+          <th class="w-3/12">Item Name</th>
+          <th class="w-2/12">Qty.</th>
           <th class="w-3/12">Price</th>
           <th class="w-2/12 text-center">Total</th>
           <th class="w-1/12"></th>
         </tr>
       </thead>
       <tbody class="">
-        <tr v-for="(item, index) in itemList" :key="item.index">
+        <tr v-for="(item, index) in invoiceDatabase.itemList" :key="item.index">
           <td class="pr-6">
             <input
               v-model="item.itemName"
@@ -194,7 +194,7 @@
           </td>
           <td class="pr-6">
             <input
-              v-model="item.price"
+              v-model="item.quantity"
               class="rounded-md w-full border border-gray-300 font-semibold"
               placeholder=""
               type="number"
@@ -202,25 +202,38 @@
           </td>
           <td class="pr-6">
             <input
-              v-model="item.quantity"
+              v-model="item.price"
               class="rounded-md w-full border border-gray-300 font-semibold"
               placeholder=""
               type="number"
             />
           </td>
           <td>
-            <p class="text-center">{{ item.quantity * item.price }}</p>
+            <p class="text-center">
+              ₦{{ (item.price * item.quantity).toLocaleString() }}
+            </p>
           </td>
           <td>
             <button
               @click="removeItem(index)"
-              :disabled="itemList.length === 1"
+              :disabled="invoiceDatabase.itemList.length === 1"
               class="cursor-pointer"
-              :class="itemList.length === 1 ? 'text-gray-500' : 'text-red-600 '"
+              :class="
+                invoiceDatabase.itemList.length === 1 ? 'text-gray-500' : 'text-red-600 '
+              "
             >
               <i class="fa fa-trash"></i>
             </button>
           </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <p class="text-center font-bold">₦{{ total.toLocaleString() }}</p>
+          </td>
+          <td></td>
         </tr>
       </tbody>
     </table>
@@ -252,6 +265,7 @@
           <p>Save as Draft</p>
         </button>
         <button
+          @click="send"
           class="px-6 shadow-md bg-blue-700 rounded-2xl p-2 ml-4 focus:outline-none text-white"
         >
           <p>Save & Send</p>
@@ -265,50 +279,66 @@
 export default {
   data() {
     return {
-      billFrom: {
-        streetAddress: "",
-        city: "",
-        postCode: "",
-        country: "",
-      },
-      billTo: {
-        clientName: "",
-        clientEmail: "",
-        streetAddress: "",
-        city: "",
-        postCode: "",
-        country: "",
-      },
-      invoiceData: {
-        invoiceDate: "",
-        paymentTerms: "",
-        projectDescription: "",
-      },
-      itemList: [
-        {
-          itemName: "",
-          quantity: "",
-          price: "",
+      invoiceDatabase: {
+        billFrom: {
+          streetAddress: "",
+          city: "",
+          postCode: "",
+          country: "",
         },
-        {
-          itemName: "",
-          quantity: "",
-          price: "",
+        billTo: {
+          clientName: "",
+          clientEmail: "",
+          streetAddress: "",
+          city: "",
+          postCode: "",
+          country: "",
         },
-      ],
+        invoiceData: {
+          invoiceDate: "",
+          paymentTerms: "",
+          projectDescription: "",
+          invoiceTotal: "",
+          status: "",
+        },
+        itemList: [
+          {
+            itemName: "",
+            quantity: 1,
+            price: 0,
+          },
+          {
+            itemName: "",
+            quantity: 1,
+            price: 0,
+          },
+        ],
+      },
     };
   },
-
+  computed: {
+    total() {
+      return this.invoiceDatabase.itemList.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+      );
+    },
+  },
   methods: {
+    send() {
+      this.$store.commit("setInvoiceDatabase", this.invoiceDatabase);
+    },
     addItem() {
-      this.itemList.push({
+      this.invoiceDatabase.itemList.push({
         itemName: "",
-        quantity: "",
-        price: "",
+        quantity: 1,
+        price: 0,
       });
     },
     removeItem(index) {
-      this.itemList = this.itemList.filter((item, i) => i !== index);
+      this.invoiceDatabase.itemList = this.invoiceDatabase.itemList.filter(
+        (item, i) => i !== index
+      );
     },
   },
   // computed: {

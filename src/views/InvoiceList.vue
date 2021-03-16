@@ -88,41 +88,216 @@ export default {
     return {
       dropdown: false,
       invoice: [],
-      invoiceData: [
+      invoiceDatabase: [
         {
-          invoiceNo: "#RT5555",
-          dueDate: "Due 19 Aug 2021",
-          Name: "Ayo Ibosiola",
-          price: "₦11,200",
-          status: "Pending",
+          billFrom: {
+            streetAddress: "8, Moses Kolade street.",
+            city: "Adiyan",
+            postCode: "100001",
+            country: "Nigeria",
+          },
+          billTo: {
+            clientName: "Ayo Ibosiola",
+            clientEmail: "ayomideibosiola100@gmail.com",
+            streetAddress: "3, Bamboye.",
+            city: "Ikeja",
+            postCode: "100002",
+            country: "Niger",
+          },
+          invoiceData: {
+            invoiceDate: "29 March, 2021",
+            paymentTerms: "30 Days",
+            projectDescription: "Design of school",
+            invoiceTotal: "#23,000",
+            status: "Paid",
+          },
+          itemList: [
+            {
+              itemName: "Laptop",
+              quantity: "4",
+              price: "#23,000",
+            },
+            {
+              itemName: "Laptop school bag",
+              quantity: "4",
+              price: "#1,300",
+            },
+          ],
         },
         {
-          invoiceNo: "#RT5555",
-          dueDate: "Due 19 Aug 2021",
-          Name: "Ayo Ibosiola",
-          price: "₦900",
-          status: "Paid",
+          billFrom: {
+            streetAddress: "8, Moses Kolade street.",
+            city: "Adiyan",
+            postCode: "100001",
+            country: "Nigeria",
+          },
+          billTo: {
+            clientName: "Ayo Ibosiola",
+            clientEmail: "ayomideibosiola100@gmail.com",
+            streetAddress: "3, Bamboye.",
+            city: "Ikeja",
+            postCode: "100002",
+            country: "Niger",
+          },
+          invoiceData: {
+            invoiceDate: "29 March, 2021",
+            paymentTerms: "30 Days",
+            projectDescription: "Design of school",
+            invoiceTotal: "#23,000",
+            status: "Paid",
+          },
+          itemList: [
+            {
+              itemName: "Laptop",
+              quantity: "4",
+              price: "#23,000",
+            },
+            {
+              itemName: "Laptop school bag",
+              quantity: "4",
+              price: "#1,300",
+            },
+          ],
         },
         {
-          invoiceNo: "#RT5555",
-          dueDate: "Due 19 Aug 2021",
-          Name: "Ayo Ibosiola",
-          price: "₦19,000",
-          status: "Paid",
-        },
-        {
-          invoiceNo: "#RT5555",
-          dueDate: "Due 19 Aug 2021",
-          Name: "Ayo Ibosiola",
-          price: "₦19,000",
-          status: "Paid",
-        },
-        {
-          invoiceNo: "#RT5555",
-          dueDate: "Due 19 Aug 2021",
-          Name: "Ayo Ibosiola",
-          price: "₦19,000",
-          status: "Pending",
+          billFrom: {
+            streetAddress: "8, Moses Kolade street.",
+            city: "Adiyan",
+            postCode: "100001",
+            country: "Nigeria",
+          },
+          billTo: {
+            clientName: "Ayo Ibosiola",
+            clientEmail: "ayomideibosiola100@gmail.com",
+            streetAddress: "3, Bamboye.",
+            city: "Ikeja",
+            postCode: "100002",
+            country: "Niger",
+          },
+          invoiceData: {
+            invoiceDate: "29 March, 2021",
+            paymentTerms: "30 Days",
+            projectDescription: "Design of school",
+            invoiceTotal: "#23,000",
+            status: "Paid",
+          },
+          itemList: [
+            {
+              itemName: "Laptop",
+              quantity: "4",
+              price: "#23,000",
+            },
+            {
+              itemName: "Laptop school bag",
+              quantity: "4",
+              price: "#1,300",
+            },
+            {
+              billFrom: {
+                streetAddress: "8, Moses Kolade street.",
+                city: "Adiyan",
+                postCode: "100001",
+                country: "Nigeria",
+              },
+              billTo: {
+                clientName: "Ayo Ibosiola",
+                clientEmail: "ayomideibosiola100@gmail.com",
+                streetAddress: "3, Bamboye.",
+                city: "Ikeja",
+                postCode: "100002",
+                country: "Niger",
+              },
+              invoiceData: {
+                invoiceDate: "29 March, 2021",
+                paymentTerms: "30 Days",
+                projectDescription: "Design of school",
+                invoiceTotal: "#23,000",
+                status: "Paid",
+              },
+              itemList: [
+                {
+                  itemName: "Laptop",
+                  quantity: "4",
+                  price: "#23,000",
+                },
+                {
+                  itemName: "Laptop school bag",
+                  quantity: "4",
+                  price: "#1,300",
+                },
+              ],
+            },
+            {
+              billFrom: {
+                streetAddress: "8, Moses Kolade street.",
+                city: "Adiyan",
+                postCode: "100001",
+                country: "Nigeria",
+              },
+              billTo: {
+                clientName: "Ayo Ibosiola",
+                clientEmail: "ayomideibosiola100@gmail.com",
+                streetAddress: "3, Bamboye.",
+                city: "Ikeja",
+                postCode: "100002",
+                country: "Niger",
+              },
+              invoiceData: {
+                invoiceDate: "29 March, 2021",
+                paymentTerms: "30 Days",
+                projectDescription: "Design of school",
+                invoiceTotal: "#23,000",
+                status: "Paid",
+              },
+              itemList: [
+                {
+                  itemName: "Laptop",
+                  quantity: "4",
+                  price: "#23,000",
+                },
+                {
+                  itemName: "Laptop school bag",
+                  quantity: "4",
+                  price: "#1,300",
+                },
+              ],
+            },
+            {
+              billFrom: {
+                streetAddress: "8, Moses Kolade street.",
+                city: "Adiyan",
+                postCode: "100001",
+                country: "Nigeria",
+              },
+              billTo: {
+                clientName: "Ayo Ibosiola",
+                clientEmail: "ayomideibosiola100@gmail.com",
+                streetAddress: "3, Bamboye.",
+                city: "Ikeja",
+                postCode: "100002",
+                country: "Niger",
+              },
+              invoiceData: {
+                invoiceDate: "29 March, 2021",
+                paymentTerms: "30 Days",
+                projectDescription: "Design of school",
+                invoiceTotal: "#23,000",
+                status: "Paid",
+              },
+              itemList: [
+                {
+                  itemName: "Laptop",
+                  quantity: "4",
+                  price: "#23,000",
+                },
+                {
+                  itemName: "Laptop school bag",
+                  quantity: "4",
+                  price: "#1,300",
+                },
+              ],
+            },
+          ],
         },
       ],
     };
