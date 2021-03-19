@@ -3,14 +3,12 @@ import { createStore } from 'vuex'
 const store = createStore({
   state () {
     return { 
-        newInvoiceCreated: [],
-          
-    
+        newInvoiceCreated: [],    
        }
   },
   mutations: {
       setNewInvoiceCreated(state, payload) {
-          state.newInvoiceCreated.push({payload})
+          state.newInvoiceCreated = payload;
       }
 
   }

@@ -330,12 +330,17 @@ export default {
     saveSend() {
       this.invoiceDatabase.invoiceData.invoiceTotal = this.total;
       this.invoiceDatabase.invoiceData.status = "Pending";
-      this.$store.dispatch("setNewInvoiceCreated", this.invoiceDatabase);
+      this.invoiceDatabase.invoiceData.invoiceNo = "#123";
+      let data = this.invoiceDatabase;
+      this.$store.commit("setNewInvoiceCreated", data);
+      console.log(this.$store.newInvoiceCreated);
     },
     saveDraft() {
       this.invoiceDatabase.invoiceData.invoiceTotal = this.total;
       this.invoiceDatabase.invoiceData.status = "Draft";
-      this.$store.dispatch("setNewInvoiceCreated", this.invoiceDatabase);
+      this.invoiceDatabase.invoiceData.invoiceNo = "#123";
+      let data = this.invoiceDatabase;
+      this.$store.commit("setNewInvoiceCreated", data);
     },
     addItem() {
       this.invoiceDatabase.itemList.push({
