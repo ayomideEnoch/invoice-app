@@ -280,6 +280,7 @@
 export default {
   data() {
     return {
+      errorMsg: "",
       invoiceDatabase: {
         billFrom: {
           streetAddress: "",
@@ -332,15 +333,15 @@ export default {
       this.invoiceDatabase.invoiceData.status = "Pending";
       this.invoiceDatabase.invoiceData.invoiceNo = "#123";
       let data = JSON.parse(JSON.stringify(this.invoiceDatabase));
-      // let data = "hi";
       this.$store.commit("setNewInvoiceCreated", data);
-      // console.log(data);
+      this.errorMsg = "Invoice entry successful!";
+      this.successMessage();
     },
     saveDraft() {
       this.invoiceDatabase.invoiceData.invoiceTotal = this.total;
       this.invoiceDatabase.invoiceData.status = "Draft";
       this.invoiceDatabase.invoiceData.invoiceNo = "#123";
-      let data = this.invoiceDatabase;
+      let data = JSON.parse(JSON.stringify(this.invoiceDatabase));
       this.$store.commit("setNewInvoiceCreated", data);
     },
     addItem() {
@@ -354,6 +355,26 @@ export default {
       this.invoiceDatabase.itemList = this.invoiceDatabase.itemList.filter(
         (item, i) => i !== index
       );
+    },
+    successMessage() {
+      this.$swal.fire({
+        position: "center",
+        icon: "success",
+        title: this.errorMsg,
+        confirmButtonText: false,
+        timer: 2000,
+        toast: true,
+      });
+    },
+    errorMessage() {
+      this.$swal.fire({
+        position: "center",
+        icon: "error",
+        title: this.errorMessage,
+        confirmButtonText: false,
+        timer: 2000,
+        toast: true,
+      });
     },
   },
 };

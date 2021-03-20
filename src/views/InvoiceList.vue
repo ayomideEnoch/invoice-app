@@ -144,11 +144,11 @@ export default {
   },
   mounted() {
     this.allInvoice();
-    let data = this.$store.newInvoiceCreated;
-    // if (data) {
-    //   this.invoice.unshift({ data });
-    //   console.log(data, "inside");
-    // }
+    let data = JSON.parse(JSON.stringify(this.$store.state.newInvoiceCreated));
+
+    if (data !== undefined) {
+      this.invoice.unshift(data);
+    }
     console.log(data);
   },
 };
