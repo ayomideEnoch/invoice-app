@@ -145,11 +145,11 @@ export default {
   mounted() {
     this.allInvoice();
     let data = this.$store.newInvoiceCreated;
-    if (data) {
-      this.invoice.unshift({ data });
-      console.log(data, "inside");
-    }
-    console.log(data, "outsie");
+    // if (data) {
+    //   this.invoice.unshift({ data });
+    //   console.log(data, "inside");
+    // }
+    console.log(data);
   },
 };
 </script>

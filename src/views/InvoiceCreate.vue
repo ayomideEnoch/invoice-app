@@ -331,9 +331,10 @@ export default {
       this.invoiceDatabase.invoiceData.invoiceTotal = this.total;
       this.invoiceDatabase.invoiceData.status = "Pending";
       this.invoiceDatabase.invoiceData.invoiceNo = "#123";
-      let data = this.invoiceDatabase;
+      let data = JSON.parse(JSON.stringify(this.invoiceDatabase));
+      // let data = "hi";
       this.$store.commit("setNewInvoiceCreated", data);
-      console.log(this.$store.newInvoiceCreated);
+      // console.log(data);
     },
     saveDraft() {
       this.invoiceDatabase.invoiceData.invoiceTotal = this.total;

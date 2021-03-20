@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import { createStore, createLogger } from 'vuex';
 
 const store = createStore({
   state () {
@@ -11,7 +11,8 @@ const store = createStore({
           state.newInvoiceCreated = payload;
       }
 
-  }
+  },
+  plugins: [createLogger()]
 })
 
 export default store;
