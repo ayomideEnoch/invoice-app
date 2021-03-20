@@ -149,7 +149,6 @@ export default {
     if (data !== undefined) {
       this.invoice.unshift(data);
     }
-    console.log(data);
   },
 };
 </script>

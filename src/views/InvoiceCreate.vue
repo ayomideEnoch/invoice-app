@@ -275,8 +275,9 @@
     </div>
     <!--  -->
     <div class="fixed z-10 inset-0 bg-black bg-opacity-10 h-screen w-full">
-      <div class="transition duration-500 ease-in-out transform translate-y-1
-      bottom-8 left-8 fixed z-20 bg-white rounded-md">
+      <div
+        class="transition duration-500 ease-in-out transform translate-y-1 bottom-8 left-8 fixed z-20 bg-white rounded-md"
+      >
         <div class="text-center px-5 py-3">
           <i class="fal fa-check-circle text-green-500 text-4xl"></i>
           <p class="text-xl">Invoice entry success!</p>
