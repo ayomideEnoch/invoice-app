@@ -15,11 +15,9 @@
           <div class="flex items-center capitalize">
             <p class="mr-4">status</p>
           </div>
-          <div
-            class="bg-yellow-100 text-yellow-700 capitalize flex items-center p-2 w-24 rounded-md"
-          >
+          <div class="capitalize flex items-center p-2 w-24 rounded-md">
             <i class="pr-2 text-xs fad fa-circle"></i>
-            <p>pending</p>
+            <p>dataShow.invoiceData.status</p>
           </div>
         </div>
         <div class="flex py-3 text-white">
@@ -45,24 +43,24 @@
       <div class="flex justify-between">
         <div class="">
           <div class="font-semibold text-lg">
-            <span class="text-gray-400">#</span>
-            <span>XM9141</span>
+            <!-- <span class="text-gray-400">#</span> -->
+            <span>dataShow.invoiceData.invoiceNo</span>
           </div>
-          <p class="capitalize text-gray-400">graphic design</p>
+          <p class="capitalize text-gray-400">dataShow.invoiceData.projectDescription</p>
         </div>
         <div class="capitalize text-gray-400 text-right">
-          <p class="">19 union terrace</p>
-          <p class="">london</p>
-          <p class="uppercase">e1 3ez</p>
-          <p class="">united kingdom</p>
+          <p class="">dataShow.billFrom.streetAddress</p>
+          <p class="">dataShow.billFrom.country</p>
+          <p class="uppercase">dataShow.billTo.streetAddress</p>
+          <p class="">dataShow.billTo.country</p>
         </div>
       </div>
       <div class="flex justify-start pt-2 pb-8">
         <div class="capitalize">
           <p class="text-gray-400">invoice date</p>
-          <p class="font-semibold text-lg">21 Aug 2021</p>
+          <p class="font-semibold text-lg">dataShow.invoiceData.invoiceDate</p>
           <p class="text-gray-400">payment due</p>
-          <p class="font-semibold text-lg">20 Sept 2021</p>
+          <p class="font-semibold text-lg">dataShow.invoiceData.invoiceDate</p>
         </div>
         <div class="capitalize px-30 ml-28">
           <p class="text-gray-400">bill to</p>
@@ -115,7 +113,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      dataShow: {},
+    };
+  },
+
+  mounted() {
+    let data = JSON.parse(JSON.stringify(this.$store.state.invoiceShowData));
+    this.dataShow = data;
+    console.log(data);
+  },
+};
 </script>
 
 <style></style>

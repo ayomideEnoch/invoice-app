@@ -51,10 +51,10 @@
       </div>
     </section>
     <section class="">
-      <div v-for="invoice in invoice" :key="invoice.index">
-        <router-link
-          :to="{ name: 'InvoiceShow' }"
-          class="flex justify-between items-center bg-white shadow-md p-2 px-5 rounded-lg mb-5"
+      <div v-for="(invoice, index) in invoice" :key="invoice.index">
+        <div
+          @click="invoiceShowData(index)"
+          class="flex justify-between items-center bg-white shadow-md p-2 px-5 rounded-lg mb-5 cursor-pointer"
         >
           <p class="font-semibold">{{ invoice.invoiceData.invoiceNo }}</p>
           <p class="text-gray-400 text-sm font-semibold">
@@ -80,7 +80,7 @@
               <i class="fas fa-angle-right cursor-pointer"></i>
             </p>
           </div>
-        </router-link>
+        </div>
       </div>
     </section>
   </div>
@@ -142,6 +142,12 @@ export default {
     },
     async allInvoice() {
       this.invoice = this.invoiceDatabase;
+    },
+    invoiceShowData(index) {
+      let data = this.invoice[index];
+      console.log(data);
+      this.$store.commit("setInvoiceShowData", data);
+      this.$router.push({ name: "InvoiceShow" });
     },
   },
   async mounted() {
