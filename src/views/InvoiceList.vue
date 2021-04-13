@@ -58,10 +58,12 @@
         >
           <p class="font-semibold">{{ invoice.invoiceData.invoiceNo }}</p>
           <p class="text-gray-400 text-sm font-semibold">
-            {{ invoice.invoiceData.invoiceDate }}
+            {{ new Date(invoice.invoiceData.invoiceDate).toDateString() }}
           </p>
           <p class="text-gray-400 text-xs font-bold">{{ invoice.billTo.clientName }}</p>
-          <p class="font-semibold text-2xl">{{ invoice.invoiceData.invoiceTotal }}</p>
+          <p class="font-semibold text-2xl">
+            ₦{{ invoice.invoiceData.invoiceTotal.toLocaleString() }}
+          </p>
           <div class="flex items-center">
             <div
               class="flex items-center justify-center rounded-md p-2 w-24"
@@ -108,22 +110,22 @@ export default {
           },
           invoiceData: {
             invoiceNo: "#123",
-            invoiceDate: "29 March, 2021",
+            invoiceDate: "2021-04-13",
             paymentTerms: "30 Days",
             projectDescription: "Design of school",
-            invoiceTotal: "#23,000",
+            invoiceTotal: "23000",
             status: "Paid",
           },
           itemList: [
             {
               itemName: "Laptop",
               quantity: "4",
-              price: "#23,000",
+              price: "23000",
             },
             {
               itemName: "Laptop school bag",
               quantity: "4",
-              price: "#1,300",
+              price: "1300",
             },
           ],
         },
@@ -138,16 +140,18 @@ export default {
       });
       this.invoice = filter;
     },
-    allInvoice() {
+    async allInvoice() {
       this.invoice = this.invoiceDatabase;
     },
   },
-  mounted() {
-    this.allInvoice();
+  async mounted() {
+    await this.allInvoice();
     let data = JSON.parse(JSON.stringify(this.$store.state.newInvoiceCreated));
-
-    if (data !== undefined) {
-      this.invoice.unshift(data);
+    let length = data.length;
+    if (length !== 0) {
+      for (let i = 0; i < length; i++) {
+        this.invoice.unshift(data[i]);
+      }
     }
   },
 };

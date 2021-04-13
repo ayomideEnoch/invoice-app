@@ -8,7 +8,7 @@ const store = createStore({
   },
   mutations: {
       setNewInvoiceCreated(state, payload) {
-          state.newInvoiceCreated = payload;
+          state.newInvoiceCreated.push(payload);
       }
 
   },

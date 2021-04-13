@@ -274,13 +274,37 @@
       </div>
     </div>
     <!--  -->
-    <div class="fixed z-10 inset-0 bg-black bg-opacity-10 h-screen w-full">
+    <div
+      v-if="successModal"
+      class="fixed z-10 inset-0 bg-black bg-opacity-20 h-screen w-full"
+    >
       <div
-        class="transition duration-500 ease-in-out transform translate-y-1 bottom-8 left-8 fixed z-20 bg-white rounded-md"
+        class="transition duration-500 ease-in-out transform translate-y-1 bottom-12 right-44 fixed z-20 bg-white rounded-xl"
       >
         <div class="text-center px-5 py-3">
           <i class="fal fa-check-circle text-green-500 text-4xl"></i>
           <p class="text-xl">Invoice entry success!</p>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div
+      v-if="failureModal"
+      class="fixed z-10 inset-0 bg-black bg-opacity-20 h-screen w-full"
+    >
+      <div
+        class="transition duration-500 ease-in-out transform translate-y-1 bottom-12 right-44 fixed z-20 bg-white rounded-xl"
+      >
+        <div class="text-center px-5 py-3">
+          <i class="fal fa-times text-red-500 text-4xl"></i>
+          <p class="text-xl">Invoice entry details incomplete!</p>
+          <p class="">Client Name, Item Price and Invoice Date are compulsory fields.</p>
+          <button
+            @click="failureModal = false"
+            class="my-2 bg-red-600 p-2 text-white rounded-xl focus:outline-none"
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>
@@ -291,7 +315,9 @@
 export default {
   data() {
     return {
-      errorMsg: "",
+      modalMsg: "",
+      successModal: false,
+      failureModal: false,
       invoiceDatabase: {
         billFrom: {
           streetAddress: "",
@@ -321,11 +347,6 @@ export default {
             quantity: 1,
             price: 0,
           },
-          {
-            itemName: "",
-            quantity: 1,
-            price: 0,
-          },
         ],
       },
     };
@@ -340,20 +361,33 @@ export default {
   },
   methods: {
     saveSend() {
-      this.invoiceDatabase.invoiceData.invoiceTotal = this.total;
-      this.invoiceDatabase.invoiceData.status = "Pending";
-      this.invoiceDatabase.invoiceData.invoiceNo = "#123";
-      let data = JSON.parse(JSON.stringify(this.invoiceDatabase));
-      this.$store.commit("setNewInvoiceCreated", data);
-      this.errorMsg = "Invoice entry successful!";
-      this.successMessage();
+      if (
+        this.invoiceDatabase.invoiceData.invoiceTotal === "" &&
+        this.invoiceDatabase.invoiceData.invoiceDate === "" &&
+        this.invoiceDatabase.billTo.clientName === ""
+      ) {
+        this.failureMessage();
+        return;
+      } else {
+        this.invoiceDatabase.invoiceData.invoiceTotal = this.total;
+        this.invoiceDatabase.invoiceData.status = "Pending";
+        let random = Math.floor(Math.random() * 1000).toString();
+        this.invoiceDatabase.invoiceData.invoiceNo = "#" + random;
+        let data = JSON.parse(JSON.stringify(this.invoiceDatabase));
+        this.$store.commit("setNewInvoiceCreated", data);
+        this.errorMsg = "Invoice entry successful!";
+        this.successMessage();
+      }
     },
     saveDraft() {
       this.invoiceDatabase.invoiceData.invoiceTotal = this.total;
       this.invoiceDatabase.invoiceData.status = "Draft";
-      this.invoiceDatabase.invoiceData.invoiceNo = "#123";
+      let random = Math.floor(Math.random() * 1000).toString();
+      this.invoiceDatabase.invoiceData.invoiceNo = "#" + random;
       let data = JSON.parse(JSON.stringify(this.invoiceDatabase));
       this.$store.commit("setNewInvoiceCreated", data);
+      this.errorMsg = "Invoice entry successful!";
+      this.successMessage();
     },
     addItem() {
       this.invoiceDatabase.itemList.push({
@@ -368,24 +402,13 @@ export default {
       );
     },
     successMessage() {
-      this.$swal.fire({
-        position: "center",
-        icon: "success",
-        title: this.errorMsg,
-        confirmButtonText: false,
-        timer: 2000,
-        toast: true,
-      });
+      this.successModal = true;
+      setTimeout(() => {
+        this.$router.push({ name: "Home" });
+      }, 2500);
     },
-    errorMessage() {
-      this.$swal.fire({
-        position: "center",
-        icon: "error",
-        title: this.errorMessage,
-        confirmButtonText: false,
-        timer: 2000,
-        toast: true,
-      });
+    failureMessage() {
+      this.failureModal = true;
     },
   },
 };
