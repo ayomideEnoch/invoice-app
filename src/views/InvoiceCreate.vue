@@ -301,7 +301,7 @@
           <p class="">Client Name, Item Price and Invoice Date are compulsory fields.</p>
           <button
             @click="failureModal = false"
-            class="my-2 bg-red-600 p-2 text-white rounded-xl focus:outline-none"
+            class="my-2 bg-red-600 px-4 py-2 text-white rounded-xl focus:outline-none"
           >
             Cancel
           </button>
@@ -380,14 +380,23 @@ export default {
       }
     },
     saveDraft() {
-      this.invoiceDatabase.invoiceData.invoiceTotal = this.total;
-      this.invoiceDatabase.invoiceData.status = "Draft";
-      let random = Math.floor(Math.random() * 1000).toString();
-      this.invoiceDatabase.invoiceData.invoiceNo = "#" + random;
-      let data = JSON.parse(JSON.stringify(this.invoiceDatabase));
-      this.$store.commit("setNewInvoiceCreated", data);
-      this.errorMsg = "Invoice entry successful!";
-      this.successMessage();
+      if (
+        this.invoiceDatabase.invoiceData.invoiceTotal === "" &&
+        this.invoiceDatabase.invoiceData.invoiceDate === "" &&
+        this.invoiceDatabase.billTo.clientName === ""
+      ) {
+        this.failureMessage();
+        return;
+      } else {
+        this.invoiceDatabase.invoiceData.invoiceTotal = this.total;
+        this.invoiceDatabase.invoiceData.status = "Draft";
+        let random = Math.floor(Math.random() * 1000).toString();
+        this.invoiceDatabase.invoiceData.invoiceNo = "#" + random;
+        let data = JSON.parse(JSON.stringify(this.invoiceDatabase));
+        this.$store.commit("setNewInvoiceCreated", data);
+        this.errorMsg = "Invoice entry successful!";
+        this.successMessage();
+      }
     },
     addItem() {
       this.invoiceDatabase.itemList.push({
