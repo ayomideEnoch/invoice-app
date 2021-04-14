@@ -17,7 +17,7 @@
           </div>
           <div class="capitalize flex items-center p-2 w-24 rounded-md">
             <i class="pr-2 text-xs fad fa-circle"></i>
-            <p>dataShow.invoiceData.status</p>
+            <p>{{ dataShow.invoiceData.status }}</p>
           </div>
         </div>
         <div class="flex py-3 text-white">
@@ -44,9 +44,11 @@
         <div class="">
           <div class="font-semibold text-lg">
             <!-- <span class="text-gray-400">#</span> -->
-            <span>dataShow.invoiceData.invoiceNo</span>
+            <span>{{ dataShow.invoiceData.invoiceNo }}</span>
           </div>
-          <p class="capitalize text-gray-400">dataShow.invoiceData.projectDescription</p>
+          <p class="capitalize text-gray-400">
+            {{ dataShow.invoiceData.projectDescription }}
+          </p>
         </div>
         <div class="capitalize text-gray-400 text-right">
           <p class="">dataShow.billFrom.streetAddress</p>
