@@ -51,9 +51,11 @@
       </div>
     </section>
     <section class="">
-      <div v-for="(invoice, index) in invoice" :key="invoice.index">
+      <!-- <div v-for="(invoice, index) in invoice" :key="invoice.index"> -->
+
+      <div v-for="invoice in invoice" :key="invoice.index">
+        <!-- @click="invoiceShowData(index)" -->
         <div
-          @click="invoiceShowData(index)"
           class="flex justify-between items-center bg-white shadow-md p-2 px-5 rounded-lg mb-5 cursor-pointer"
         >
           <p class="font-semibold">{{ invoice.invoiceData.invoiceNo }}</p>

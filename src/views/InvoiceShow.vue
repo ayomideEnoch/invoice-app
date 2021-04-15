@@ -17,7 +17,7 @@
           </div>
           <div class="capitalize flex items-center p-2 w-24 rounded-md">
             <i class="pr-2 text-xs fad fa-circle"></i>
-            <p>{{ dataShow.invoiceData.status }}</p>
+            <p>{{ state.dataShow.invoiceData.status }}</p>
           </div>
         </div>
         <div class="flex py-3 text-white">
@@ -44,25 +44,29 @@
         <div class="">
           <div class="font-semibold text-lg">
             <!-- <span class="text-gray-400">#</span> -->
-            <span>{{ dataShow.invoiceData.invoiceNo }}</span>
+            <span>{{ state.dataShow.invoiceData.invoiceNo }}</span>
           </div>
           <p class="capitalize text-gray-400">
-            {{ dataShow.invoiceData.projectDescription }}
+            {{ state.dataShow.invoiceData.projectDescription }}
           </p>
         </div>
         <div class="capitalize text-gray-400 text-right">
-          <p class="">dataShow.billFrom.streetAddress</p>
-          <p class="">dataShow.billFrom.country</p>
-          <p class="uppercase">dataShow.billTo.streetAddress</p>
-          <p class="">dataShow.billTo.country</p>
+          <p class="">{{ state.dataShow.billFrom.streetAddress }}</p>
+          <p class="">{{ state.dataShow.billFrom.country }}</p>
+          <p class="">{{ state.dataShow.billTo.streetAddress }}</p>
+          <p class="">{{ state.dataShow.billTo.country }}</p>
         </div>
       </div>
       <div class="flex justify-start pt-2 pb-8">
         <div class="capitalize">
           <p class="text-gray-400">invoice date</p>
-          <p class="font-semibold text-lg">dataShow.invoiceData.invoiceDate</p>
+          <p class="font-semibold text-lg">
+            {{ state.dataShow.invoiceData.invoiceDate }}
+          </p>
           <p class="text-gray-400">payment due</p>
-          <p class="font-semibold text-lg">dataShow.invoiceData.invoiceDate</p>
+          <p class="font-semibold text-lg">
+            {{ state.dataShow.invoiceData.invoiceDate }}
+          </p>
         </div>
         <div class="capitalize px-30 ml-28">
           <p class="text-gray-400">bill to</p>
@@ -115,17 +119,19 @@
 </template>
 
 <script>
+import { onMounted, reactive } from "vue";
 export default {
-  data() {
-    return {
+  setup() {
+    const state = reactive({
       dataShow: {},
-    };
-  },
+    });
 
-  mounted() {
-    let data = JSON.parse(JSON.stringify(this.$store.state.invoiceShowData));
-    this.dataShow = data;
-    console.log(data);
+    onMounted(() => {
+      let data = JSON.parse(JSON.stringify(this.$store.state.invoiceShowData));
+      state.dataShow = data;
+      console.log(data);
+    });
+    return { state };
   },
 };
 </script>
