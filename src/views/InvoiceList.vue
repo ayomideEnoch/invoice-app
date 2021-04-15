@@ -56,7 +56,7 @@
       <div v-for="invoice in invoice" :key="invoice.index">
         <!-- @click="invoiceShowData(index)" -->
         <div
-          class="flex justify-between items-center bg-white shadow-md p-2 px-5 rounded-lg mb-5 cursor-pointer"
+          class="flex justify-between items-center bg-white shadow-md p-2 px-5 rounded-lg mb-5"
         >
           <p class="font-semibold">{{ invoice.invoiceData.invoiceNo }}</p>
           <p class="text-gray-400 text-sm font-semibold">
