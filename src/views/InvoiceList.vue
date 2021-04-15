@@ -15,7 +15,7 @@
         </button>
         <div
           v-if="dropdown"
-          class="bg-white w-32 absolute top-20 mt-1 right-72 mr-6 rounded-md text-sm py-2 shadow-md"
+          class="bg-white w-32 absolute top-20 mt-1 lg:right-72 md:right-44 right-36 mr-6 rounded-md text-sm py-2 shadow-md"
         >
           <p
             @click="allInvoice(), (dropdown = false)"
@@ -53,7 +53,8 @@
     <section class="">
       <!-- <div v-for="(invoice, index) in invoice" :key="invoice.index"> -->
 
-      <div v-for="invoice in invoice" :key="invoice.index">
+      <!--- PC view --->
+      <div v-for="invoice in invoice" :key="invoice.index" class="hidden md:block">
         <!-- @click="invoiceShowData(index)" -->
         <div
           class="flex justify-between items-center bg-white shadow-md p-2 px-5 rounded-lg mb-5"
@@ -81,6 +82,41 @@
             <p class="text-purple-400 pl-3 font-bold">
               <i class="fas fa-angle-right cursor-pointer"></i>
             </p>
+          </div>
+        </div>
+      </div>
+      <!--- Mobile view --->
+      <div v-for="invoice in invoice" :key="invoice.index" class="block md:hidden">
+        <!-- @click="invoiceShowData(index)" -->
+        <div class="bg-white shadow-md p-2 px-8 rounded-lg mb-5">
+          <div class="flex justify-between mb-4">
+            <p class="font-semibold">{{ invoice.invoiceData.invoiceNo }}</p>
+
+            <p class="text-gray-400 text-xs font-bold">{{ invoice.billTo.clientName }}</p>
+          </div>
+          <div class="flex justify-between">
+            <div>
+              <p class="text-gray-400 text-sm font-semibold">
+                {{ new Date(invoice.invoiceData.invoiceDate).toDateString() }}
+              </p>
+              <p class="font-semibold text-2xl">
+                ₦{{ invoice.invoiceData.invoiceTotal.toLocaleString() }}
+              </p>
+            </div>
+
+            <div class="flex items-center">
+              <div
+                class="flex items-center justify-center rounded-md p-2 w-24"
+                :class="
+                  invoice.invoiceData.status === 'Paid'
+                    ? 'bg-green-100 text-green-700'
+                    : 'bg-yellow-100 text-yellow-700'
+                "
+              >
+                <i class="pr-2 text-xs fad fa-circle"></i>
+                <p class="text-sm text-center">{{ invoice.invoiceData.status }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
