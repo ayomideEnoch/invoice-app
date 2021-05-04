@@ -6,10 +6,10 @@
         <p class="text-gray-400 text-sm">There are {{ invoice.length }} total invoices</p>
       </div>
 
-      <div class="flex items-center">
+      <div class="flex items-center text-sm">
         <button @click="dropdown = !dropdown" class="flex mr-4 focus:outline-none">
-          <p class="font-semibold text-sm">Filter by status</p>
-          <p class="font-bold text-sm text-purple-600 pl-3">
+          <p class="font-semibold">Filter by status</p>
+          <p class="font-bold text-purple-600 pl-3">
             <i class="fa fa-angle-down"></i>
           </p>
         </button>
